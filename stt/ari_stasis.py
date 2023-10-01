@@ -1,11 +1,7 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0-or-later
-
 import uuid
 import ari
 import logging
 import sys
-import requests
 
 from contextlib import contextmanager
 from functools import partial
@@ -41,7 +37,7 @@ def on_playback_finished(channel, playback, event):
 
 
 def on_stasis_start(objects, event, bridge):
-    logging.debug(f'{event}')
+    logging.debug('%s', event)
 
     channel = objects['channel']
     channel.answer()
