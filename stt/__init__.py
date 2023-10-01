@@ -1,4 +1,8 @@
-ARI_URL = 'http://localhost:8088'
-ARI_USERNAME = 'adminari'
-ARI_PASSWORD = 'my_secure_password'
-APPLICATION = 'ari_app'
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+ARI_URL = os.environ.get('ARI_URL')
+ARI_USERNAME = os.environ.get('ARI_USERNAME')
+ARI_PASSWORD = os.environ.get('ARI_PASSWORD')
+APPLICATION = os.environ.get('AAPPLICATIONRI_URL')

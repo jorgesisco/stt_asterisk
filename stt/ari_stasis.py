@@ -1,14 +1,16 @@
+# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 import uuid
 import ari
 import logging
 import sys
 import requests
-# from ari.exceptions import ARINotFound
 
 from contextlib import contextmanager
 from functools import partial
 
-from app import ARI_URL, ARI_USERNAME, ARI_PASSWORD, APPLICATION
+from stt import ARI_URL, ARI_USERNAME, ARI_PASSWORD, APPLICATION
 
 BRIDGE_ID = str(uuid.uuid4())
 
@@ -29,7 +31,7 @@ def application_bridge(client):
         try:
             logging.debug('Destroying our bridge')
             client.bridges.destroy(bridgeId=BRIDGE_ID)
-        except exceptions:
+        except Exception:
             pass
 
 
@@ -39,7 +41,7 @@ def on_playback_finished(channel, playback, event):
 
 
 def on_stasis_start(objects, event, bridge):
-    logging.debug('%s', event)
+    logging.debug(f'{event}')
 
     channel = objects['channel']
     channel.answer()
